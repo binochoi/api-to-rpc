@@ -1,25 +1,31 @@
-import { Context } from "src/types";
-import { isHttpRequestPayload } from "src/utils/isHttpRequestPayload";
+import { Action, Method, Payload } from "src/types";
 
-const get = (path: string, context: Context) => (target: any, prop: string) => {
-    const restPath = path ? `${path}/${prop}` : `/${prop}`;
-    if(prop.startsWith('$')) {
-        const action = prop.slice(1);
-        let method: string = action;
-        // if(isHttpRequestPayload(action)) {
-        //     
-        // }
-        return () => ({
-            target,
-            fullPath: restPath,
-            url: context.baseURL + restPath,
-            method,
-        })
+type Options = {
+    startPath: string,
+};
+const methods = new Set<Method>(['get', 'post', 'put', 'delete', 'patch']);
+const get = (options: Options) => (target: any, prop: string, c: any) => {
+    const { startPath: path } = options;
+    const isAction = prop.startsWith('$');
+    const restPath = isAction ? path : (path ? `${path}/${prop}` : `/${prop}`);
+    if(isAction) {
+        const action = prop.slice(1) as Action;
+        if(methods.has(action)) {
+            return (payload: Payload) => ({
+                target,
+                fullPath: restPath,
+                url: restPath,
+                method: action,
+                payload
+            })
+        }
     }
-    return recurseSegments(path, context);
+    return recurseSegments(options);
 }
-export const recurseSegments = (path: string, c: Context) => {
+export const recurseSegments = (options: {
+    startPath: string,
+}) => {
     return new Proxy({}, {
-        get: get(path, c),
+        get: get(options),
     })
 }

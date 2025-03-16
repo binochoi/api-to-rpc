@@ -28,5 +28,12 @@ type API = {
     sessions: {},
 }
 const api = rpc<API>({ baseURL: '/api' });
-api.users[':id'].$get()
 api.posts.$post()
+
+
+const a = api.users[':id'].$get({
+    query: {
+        get_query_sival: true,
+    }
+})
+console.log(a);

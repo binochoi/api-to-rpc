@@ -3,6 +3,7 @@ import { RPCPayloadMatcher } from "./utils/RPCPayloadMatcher";
 
 export type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
 export type Payload = 'query' | 'body' | 'params';
+export type Action = Method;
 
 export type RPCOptions = {
     baseURL: string;
