@@ -1,10 +1,10 @@
-import { Payload } from "..";
+import { ActionParams, Payload } from "..";
 
 
 /**
  * parameter로 fetch 타입 제작
  */
-export type MakeFetchThroughRequest<Tapi extends { [K: string]: any }, K extends keyof Tapi> = keyof Tapi[K] extends (Payload | 'response')
+export type MakeFetchThroughRequest<Tapi extends { [K: string]: any }, K extends keyof Tapi> = keyof Tapi[K] extends ActionParams
     ? FetchFn<Tapi[K]>
     : Promise<void>
 /**

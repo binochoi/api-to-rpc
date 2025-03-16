@@ -2,21 +2,26 @@ import rpc from 'api-to-rpc';
 
 type API = {
     users: {
-        ':id': {
-            $get: {
-                query: {
-                    get_query_sival: true,
+        messages: {
+            ':id': {
+                $get: {
+                    params: {
+                        id: string,
+                    },
+                    query: {
+                        get_query: true,
+                    },
+                    response: {
+                        res_true: 'ok'
+                    },
                 },
-                response: {
-                    res_true: 'ok'
+                $post: {
+                    response: {
+                        
+                    }
                 },
             },
-            $post: {
-                response: {
-                    
-                }
-            },
-        },
+        }
     },
     posts: {
         $post: {
@@ -28,12 +33,13 @@ type API = {
     sessions: {},
 }
 const api = rpc<API>({ baseURL: '/api' });
-api.posts.$post()
 
-
-const a = api.users[':id'].$get({
+const a = api.users.messages[':id'].$get({
+    params: {
+        id: '1231',
+    },
     query: {
-        get_query_sival: true,
+        get_query: true,
     }
 })
 console.log(a);
