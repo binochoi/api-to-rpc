@@ -4,19 +4,29 @@ type API = {
     users: {
         ':id': {
             $get: {
-                query?: {
+                query: {
                     get_query_sival: true,
                 },
                 response: {
                     res_true: 'ok'
                 },
             },
-            $post: {},
+            $post: {
+                response: {
+                    
+                }
+            },
         },
     },
-    posts: {},
+    posts: {
+        $post: {
+            response: {
+                
+            }
+        },
+    },
     sessions: {},
 }
 const api = rpc<API>({ baseURL: '/api' });
-api.users[':id'].$get({
-});
+api.users[':id'].$get()
+api.posts.$post()
