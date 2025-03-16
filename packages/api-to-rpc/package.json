@@ -1,5 +1,5 @@
 {
-  "name": "ts-lib-template",
+  "name": "api-to-rpc",
   "version": "0.0.1",
   "description": "",
   "files": [
@@ -7,8 +7,9 @@
   ],
   "license": "MIT",
   "scripts": {
+    "postinstall": "pnpm build",
     "dev": "pkgroll --clean-dist --sourcemap=inline --watch",
-    "build": "pkgroll --clean-dist --minify"
+    "build": "pkgroll --clean-dist --minify && npx pkg-to-dist"
   },
   "devDependencies": {
     "@binochoi/eslint-config-typescript": "^0.0.25",
@@ -20,18 +21,23 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
   "exports": {
-    "require": {
-      "types": "./dist/index.d.cts",
-      "default": "./dist/index.cjs"
-    },
-    "import": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
+    ".": {
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.mjs"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
     }
   },
   "keywords": [],
   "dependencies": {
     "pkgroll": "^2.4.2",
     "typescript": "^5.5.4"
+  },
+  "peerDependencies": {
+    "ofetch": "^1.4.1"
   }
 }
