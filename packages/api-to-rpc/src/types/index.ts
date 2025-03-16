@@ -33,7 +33,7 @@ type RemoveNeverProps<T> = {
 };
 
 type MakeFetchThroughRequest<Tapi extends { [K: string]: any }, K extends keyof Tapi> = keyof Tapi[K] extends (Payload | 'response')
-    ? (params: RemoveNeverProps<RPCObjectRecurse<Tapi[K]>>) => Tapi[K]['response']
+    ? (params: RemoveNeverProps<RPCObjectRecurse<Tapi[K]>>) => Promise<Tapi[K]['response']>
     : void
 export type RecurseApiDeep<Tapi extends { [K: string]: any }> = {
     [K in keyof Tapi]: K extends RPCMethodAction
