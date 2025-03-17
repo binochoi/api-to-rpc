@@ -1,5 +1,5 @@
 import { Action, Method, Payload } from "src/types";
-import { fetchRequest } from "./createFetch";
+import { fetchRequest } from "./fetchRequest";
 import { convertUrlParams } from "src/utils/convertUrlParams";
 
 type Options = {
