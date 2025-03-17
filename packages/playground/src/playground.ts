@@ -32,7 +32,13 @@ type API = {
     },
     sessions: {},
 }
-const api = rpc<API>({ baseURL: '/api' });
+const api = rpc<API>({
+    baseURL: '/api',
+    // 나중에 interceptor로 바꿈
+    transform(context, fetcher) {
+        return fetcher(context);
+    },
+});
 
 const a = api.users.messages[':id'].$get({
     params: {

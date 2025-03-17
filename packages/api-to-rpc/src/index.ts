@@ -1,10 +1,12 @@
-import { RPCOptions } from './types';
+import { RPCContext, RPCContextOutput } from './types';
 import { recurseSegments } from './services/recurseSegments';
 import { RecurseApiDeep } from 'src/types';
 
-const rpc = <Tapi extends object>(options: RPCOptions): RecurseApiDeep<Tapi> => {
+const rpc = <Tapi extends object>(context: RPCContext): RecurseApiDeep<Tapi> => {
+    context.transform ||= (fn: any) => fn;
     return recurseSegments({
-        startPath: options.baseURL,
+        startPath: context.baseURL,
+        context: context as RPCContextOutput,
     });
 }
 export default rpc;

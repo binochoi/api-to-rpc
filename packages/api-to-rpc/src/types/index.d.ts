@@ -1,3 +1,4 @@
+import { createFetcher, fetchRequest } from "src/services/fetchRequest";
 import { MakeFetchThroughRequest } from "./utils/MakeFetchThroughRequest";
 import { RPCPayloadMatcher } from "./utils/RPCPayloadMatcher";
 
@@ -11,11 +12,15 @@ export type Payload = 'query' | 'body' | 'params';
 export type ActionParams = Payload | 'response';
 export type Action = Method;
 
-export type RPCOptions = {
+type TransformContext = {
+    
+};
+export type RPCContext = {
     baseURL: string;
+    transform?: (params: Parameters<typeof createFetcher>[0], next: typeof createFetcher) => Promise<any>;
 }
-
-export type Context = RPCOptions;
+export type RPCContextOutput = Required<RPCContext>;
+export type Context = RPCContext;
 
 export type RPCMethodAction = `$${Method}`;
 export type RPCPayloadAction = `$${Payload}`;

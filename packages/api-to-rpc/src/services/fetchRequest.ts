@@ -1,12 +1,27 @@
 import { $fetch } from "ofetch";
+import { Payload } from "src/types";
 import { HttpRequestParameters } from "src/types/fetch";
+import { convertUrlParams } from "src/utils/convertUrlParams";
 
-export const fetchRequest = ({
-    url,
-    payload: { body, query },
+export const createFetcher = ({
+    url: _url,
+    payload: { body, query, params },
     fetchOptions,
-}: HttpRequestParameters) => $fetch(url, {
-    ...fetchOptions,
-    body,
-    query,
-})
+}: HttpRequestParameters) => {
+    const url = convertUrlParams(_url, params || {});
+    return $fetch(url, { ...fetchOptions, body, query });
+}
+
+/**
+ * $get, $post... 에 해당하는 함수
+ */
+export const fetchRequest = ({ url, method, ...restParams }: Omit<HttpRequestParameters, 'payload'>) => {
+    return (payload: Partial<Record<Payload, any>> = {}) => {
+        return createFetcher({
+            url,
+            method,
+            payload: payload || {},
+            ...restParams,
+        })
+    }
+}

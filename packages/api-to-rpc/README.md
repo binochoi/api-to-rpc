@@ -27,6 +27,14 @@ const { users } = rpc<API>({
 });
 const res = await users[':id'].$query();
 ```
+# options
+```ts
+rpc({
+    transform() {
+        
+    }
+})
+```
 # TODO
 - [] file
 - [] SSE
