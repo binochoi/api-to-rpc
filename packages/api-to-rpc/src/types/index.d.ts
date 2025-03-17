@@ -12,12 +12,9 @@ export type Payload = 'query' | 'body' | 'params';
 export type ActionParams = Payload | 'response';
 export type Action = Method;
 
-type TransformContext = {
-    
-};
 export type RPCContext = {
     baseURL: string;
-    transform?: (params: Parameters<typeof createFetcher>[0], next: typeof createFetcher) => Promise<any>;
+    interceptor?: (params: Parameters<typeof createFetcher>[0], next: typeof createFetcher) => Promise<any>;
 }
 export type RPCContextOutput = Required<RPCContext>;
 export type Context = RPCContext;

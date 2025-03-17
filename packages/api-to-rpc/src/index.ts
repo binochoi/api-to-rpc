@@ -3,7 +3,7 @@ import { recurseSegments } from './services/recurseSegments';
 import { RecurseApiDeep } from 'src/types';
 
 const rpc = <Tapi extends object>(context: RPCContext): RecurseApiDeep<Tapi> => {
-    context.transform ||= (fn: any) => fn;
+    context.interceptor ||= (params, fetcher) => fetcher(params);
     return recurseSegments({
         startPath: context.baseURL,
         context: context as RPCContextOutput,

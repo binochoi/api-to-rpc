@@ -6,14 +6,14 @@ type Options = {
 };
 const methods = new Set<Method>(['get', 'post', 'put', 'delete', 'patch']);
 const get = (options: Options, context: RPCContextOutput) => (_: any, prop: string) => {
-    const { transform } = context;
+    const { interceptor } = context;
     const { startPath: path } = options;
     const isAction = prop.startsWith('$');
     const restPath = isAction ? path : (path ? `${path}/${prop}` : `/${prop}`);
     if(isAction) {
         const action = prop.slice(1) as Action;
         if(methods.has(action)) {
-            return (payload: Partial<Record<Payload, any>> = {}) => transform({
+            return (payload: Partial<Record<Payload, any>> = {}) => interceptor({
                 payload,
                 method: action,
                 url: restPath,

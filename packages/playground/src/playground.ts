@@ -34,8 +34,7 @@ type API = {
 }
 const api = rpc<API>({
     baseURL: '/api',
-    // 나중에 interceptor로 바꿈
-    transform(context, fetcher) {
+    interceptor(context, fetcher) {
         return fetcher(context);
     },
 });
