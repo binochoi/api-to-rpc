@@ -2,8 +2,7 @@
   "name": "nitro-playground",
   "private": true,
   "scripts": {
-    "postinstall": "pnpm prepare",
-    "prepare": "nitro prepare",
+    "postinstall": "nitro prepare",
     "build": "nitro build",
     "dev": "nitro dev",
     "preview": "node .output/server/index.mjs"
