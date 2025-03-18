@@ -9,6 +9,7 @@
   "scripts": {
     "postinstall": "pnpm dev",
     "to-dist": "npx pkg-to-dist",
+    "w": "chokidar 'src/**/*.ts' -c 'run-s dev' -t 1000",
     "dev": "run-s dev.build to-dist",
     "dev.build": "pkgroll --clean-dist --sourcemap=inline",
     "build.only": "pkgroll --clean-dist --minify",
