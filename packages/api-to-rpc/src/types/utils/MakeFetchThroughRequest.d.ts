@@ -1,6 +1,5 @@
 import { ActionParams, Payload } from "..";
 
-
 /**
  * parameter로 fetch 타입 제작
  */
@@ -26,10 +25,10 @@ type RPCObjectRecurse<T> = {
 type RemoveNeverProps<T> = {
 [K in keyof T as T[K] extends never ? never : K]: T[K]
 };
-
 /**
- * FetchRequestParam<T>가 빈 객체인 경우 params를 선택적으로 만드는 타입
+ * FetchRequestParam<T>가 빈 객체 타입인 경우 params를 선택적으로 만드는 타입
+ * 예를 들어 get일 경우에는 파라미터 자체가 아예 없이 url만으로 요청이 갈 수도 있다
  */
 type FetchFn<T extends {[K: string]: any}> = IsAllPropertiesOptional<FetchRequestParam<T>> extends true
   ? (params?: FetchRequestParam<T>) => Promise<T['response']>
-  : (params: FetchRequestParam<T>) => Promise<T['response']>;
+  : (params: FetchRequestParam<T>) => Promise<T['response']>

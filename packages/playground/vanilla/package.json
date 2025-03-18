@@ -1,5 +1,5 @@
 {
-  "name": "playground",
+  "name": "vanilla-playground",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,6 +13,6 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
-    "api-to-rpc": "../api-to-rpc/dist"
+    "api-to-rpc": "../../api-to-rpc/dist"
   }
 }

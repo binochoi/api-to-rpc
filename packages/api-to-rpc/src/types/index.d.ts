@@ -14,7 +14,7 @@ export type Action = Method;
 
 export type RPCContext = {
     baseURL: string;
-    interceptor?: (params: Parameters<typeof createFetcher>[0], next: typeof createFetcher) => Promise<any>;
+    interceptor?: (params: Parameters<typeof createFetcher>[0], next: typeof createFetcher) => any;
 }
 export type RPCContextOutput = Required<RPCContext>;
 export type Context = RPCContext;
