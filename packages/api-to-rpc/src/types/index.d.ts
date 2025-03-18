@@ -22,12 +22,6 @@ export type Context = RPCContext;
 export type RPCMethodAction = `$${Method}`;
 export type RPCPayloadAction = `$${Payload}`;
 export type RPCAction = RPCMethodAction | RPCPayloadAction;
-type AsyncFetch = any;
-export type RPCResult = {
-    [key in RPCAction]: {
-        (requestParam: Record<RPCPayloadMatcher<key>, any>): AsyncFetch,
-    };
-}
 export type RecurseApiDeep<Tapi extends { [K: string]: any }> = {
     [K in keyof Tapi]: K extends RPCMethodAction
     ? MakeFetchThroughRequest<Tapi, K>
