@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import type { API } from './.nuxt/.rpc-definition.d.ts'
 import rpc from 'api-to-rpc'
-declare module "api-to-rpc" {
-  export interface Window<T> {
-    type: 'sival'
-  }
-}
+import type { API } from './.nuxt/.rpc-definition.d.ts'
 const { api } = rpc<API>({
   baseURL: 'http://localhost:3000',
   interceptor(params, next) {
