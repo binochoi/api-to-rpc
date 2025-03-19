@@ -9,7 +9,7 @@ const { api } = rpc<API>({
 })
 const a = await api.$get({
   query: {
-    sival_query:'True'
+    query_visible:'True'
   }
 });
 </script>

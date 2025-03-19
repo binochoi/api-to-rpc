@@ -1,6 +1,6 @@
 export const schema = {} as {
     query: {
-      sival_query: 'True',
+      query_visible: 'True',
     }
 }
 export default defineEventHandler((event) => {
