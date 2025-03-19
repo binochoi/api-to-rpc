@@ -24,12 +24,9 @@ export default () => ({
                 apiRoutes = defu(apiRoutes, r);
             })
             const file = `export type API = ${JSON.stringify(apiRoutes).replaceAll('"~~', '').replaceAll('~~"', '')}`;
-            let runtimeType: 'nuxt' | 'nitro';
             if (fs.existsSync('./.nuxt')) {
-                runtimeType = 'nuxt';
                 fs.writeFileSync('./.nuxt/.rpc-definition.d.ts', file);
             } else if (fs.existsSync('./.nitro')) {
-                runtimeType = 'nitro';
                 fs.writeFileSync('./.nitro/.rpc-definition.d.ts', file);
             } else {
                 throw new Error('.nitro or .nuxt directory not found');
