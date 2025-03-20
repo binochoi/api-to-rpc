@@ -5,7 +5,7 @@ import { ActionParams, Payload } from "..";
  */
 export type MakeFetchThroughRequest<Tapi extends { [K: string]: any }, K extends keyof Tapi> = keyof Tapi[K] extends ActionParams
     ? FetchFn<Tapi[K]>
-    : () => Promise<void>
+    : () => Promise<Tapi[K]['response']>
 /**
  * @example
  * ```ts

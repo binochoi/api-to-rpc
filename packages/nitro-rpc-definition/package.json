@@ -1,13 +1,12 @@
 {
   "name": "nitro-rpc-definition",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "files": [
     "dist"
   ],
   "license": "MIT",
   "scripts": {
-    "postinstall": "pnpm dev",
     "dev": "pkgroll --clean-dist --sourcemap=inline && npx pkg-to-dist",
     "build": "pkgroll --clean-dist --minify && npx pkg-to-dist",
     "deploy": "run-s build deploy.only",

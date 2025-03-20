@@ -1,13 +1,12 @@
 {
   "name": "api-to-rpc",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "",
   "files": [
     "dist"
   ],
   "license": "MIT",
   "scripts": {
-    "postinstall": "pnpm dev",
     "to-dist": "npx pkg-to-dist",
     "w": "chokidar 'src/**/*.ts' -c 'run-s dev' -t 1000",
     "dev": "run-s dev.build to-dist",

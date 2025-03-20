@@ -17,13 +17,15 @@ export default () => ({
                     {
                         [`$${method || 'get'}`]: `~~` + 
                             `{ response: ReturnType<(typeof import('${handler}'))['default']> }` +
-                            `& (typeof import('${handler}'))['schema']` +
+                            `& AssertSchema<(typeof import('${handler}'))>` +
                             `~~`
                     }
                 )
                 apiRoutes = defu(apiRoutes, r);
             })
-            const file = `export type API = ${JSON.stringify(apiRoutes).replaceAll('"~~', '').replaceAll('~~"', '')}`;
+            const file = `
+            type AssertSchema<T> = 'schema' extends keyof T ? T['schema'] : {};
+            export type API = ${JSON.stringify(apiRoutes).replaceAll('"~~', '').replaceAll('~~"', '')}`;
             if (fs.existsSync('./.nuxt')) {
                 fs.writeFileSync('./.nuxt/.rpc-definition.d.ts', file);
             } else if (fs.existsSync('./.nitro')) {
