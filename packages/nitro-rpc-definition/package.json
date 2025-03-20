@@ -1,5 +1,5 @@
 {
-  "name": "nitro-rpc",
+  "name": "nitro-rpc-definition",
   "version": "0.0.1",
   "description": "",
   "files": [
@@ -9,7 +9,9 @@
   "scripts": {
     "postinstall": "pnpm dev",
     "dev": "pkgroll --clean-dist --sourcemap=inline && npx pkg-to-dist",
-    "build": "pkgroll --clean-dist --minify && npx pkg-to-dist"
+    "build": "pkgroll --clean-dist --minify && npx pkg-to-dist",
+    "deploy": "run-s build deploy.only",
+    "deploy.only": "cd dist && pnpm publish --no-git-checks"
   },
   "devDependencies": {
     "@binochoi/eslint-config-typescript": "^0.0.25",

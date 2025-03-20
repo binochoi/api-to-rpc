@@ -2,13 +2,12 @@
   "name": "nitro-playground",
   "private": true,
   "scripts": {
-    "postinstall": "nitro prepare",
     "build": "nitro build",
     "dev": "nitro dev",
     "preview": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "nitropack": "latest",
-    "nitro-rpc": "../../nitro-rpc/dist"
+    "nitro-rpc-definition": "../../nitro-rpc-definition/dist"
   }
 }

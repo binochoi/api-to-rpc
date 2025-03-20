@@ -4,7 +4,7 @@ import defu from 'defu'
 import * as fs from 'fs';
 import { injectValueToDeepProperties } from './utils/injectValueToDeepProperties';
 export default () => ({
-    name: "nitro-rpc",
+    name: "nitro-rpc-definition",
     async setup(nitro) {
         const makeRpcDefinition = () => {
             let apiRoutes = {};
@@ -34,7 +34,6 @@ export default () => ({
         }
         nitro.hooks.addHooks({
             'dev:reload': makeRpcDefinition,
-            'types': makeRpcDefinition,
         })
     },
   }) satisfies NitroModule;
