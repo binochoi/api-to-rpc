@@ -24,7 +24,7 @@ export default () => ({
                 apiRoutes = defu(apiRoutes, r);
             })
             const file = `
-            type AssertSchema<T> = 'schema' extends keyof T ? T['schema'] : {};
+            type AssertSchema<T> = 'schema' extends keyof T ? { [K in keyof T['schema']]: ReturnType<T['schema'][K]> } : {};
             export type API = ${JSON.stringify(apiRoutes).replaceAll('"~~', '').replaceAll('~~"', '')}`;
             if (fs.existsSync('./.nuxt')) {
                 fs.writeFileSync('./.nuxt/.rpc-definition.d.ts', file);
