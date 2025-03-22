@@ -5,11 +5,12 @@ import { convertUrlParams } from "src/utils/convertUrlParams";
 
 export const createFetcher = ({
     url: _url,
+    method,
     payload: { body, query, params },
     fetchOptions,
 }: HttpRequestParameters) => {
     const url = convertUrlParams(_url, params || {});
-    return $fetch(url, { ...fetchOptions, body, query });
+    return $fetch(url, { ...fetchOptions, body, query, method });
 }
 
 /**
