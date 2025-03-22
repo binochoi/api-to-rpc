@@ -10,10 +10,11 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "nuxt": "^3.16.0",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0",
+    "api-to-rpc": "../../api-to-rpc/dist",
     "nitro-rpc-definition": "../../nitro-rpc-definition/dist",
-    "api-to-rpc": "../../api-to-rpc/dist"
+    "nuxt": "^3.16.0",
+    "valibot": "^1.0.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   }
 }
