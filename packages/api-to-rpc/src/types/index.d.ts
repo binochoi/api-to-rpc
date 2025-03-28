@@ -2,6 +2,7 @@ import { createFetcher, fetchRequest } from "src/services/fetchRequest";
 import { MakeFetchThroughRequest } from "./utils/MakeFetchThroughRequest";
 import { RPCPayloadMatcher } from "./utils/RPCPayloadMatcher";
 
+/** @todo head, options 추가해야 하는지 */
 export type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
 export type Payload = 'query' | 'body' | 'params';
 /**
