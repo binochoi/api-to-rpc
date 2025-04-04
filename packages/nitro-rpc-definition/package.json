@@ -1,6 +1,6 @@
 {
   "name": "nitro-rpc-definition",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "files": [
     "dist"
@@ -27,12 +27,17 @@
     ".": {
       "types": "./dist/index.d.cts",
       "default": "./dist/index.mjs"
+    },
+    "./imports": {
+      "types": "./dist/imports.d.cts",
+      "default": "./dist/imports.mjs"
     }
   },
   "keywords": [],
   "peerDependencies": {
     "defu": "^6.1.4",
     "nitropack": "^2.11.6",
-    "ofetch": "^1.4.1"
+    "ofetch": "^1.4.1",
+    "api-to-rpc": "latest"
   }
 }

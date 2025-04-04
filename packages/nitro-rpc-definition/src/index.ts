@@ -8,6 +8,12 @@ export default () => ({
     async setup(nitro) {
         const makeRpcDefinition = () => {
             let apiRoutes = {};
+            nitro.options.imports = defu(nitro.options.imports, {
+                imports: [{
+                    from: 'nitro-rpc-definition/imports',
+                    name: 'defineHandlerSchema'
+                }]
+            });
             nitro.scannedHandlers
             .filter((handler): handler is typeof handler & { route: string } => !!handler.route)
             .map(({ route, method, handler }) => {
@@ -24,7 +30,7 @@ export default () => ({
                 apiRoutes = defu(apiRoutes, r);
             })
             const file = `
-            type AssertSchema<T> = 'schema' extends keyof T ? { [K in keyof T['schema']]: ReturnType<T['schema'][K]> } : {};
+            type AssertSchema<T> = 'schema' extends keyof T ? { [K in keyof T['schema']]: T['schema'][K] extends (...args: any[]) => any ? ReturnType<T['schema'][K]> : T['schema'][K] } : {};
             export type API = ${JSON.stringify(apiRoutes).replaceAll('"~~', '').replaceAll('~~"', '')}`;
             if (fs.existsSync('./.nuxt')) {
                 fs.writeFileSync('./.nuxt/.rpc-definition.d.ts', file);
