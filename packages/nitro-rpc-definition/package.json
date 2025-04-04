@@ -1,12 +1,13 @@
 {
   "name": "nitro-rpc-definition",
-  "version": "0.0.5",
+  "version": "0.1.4",
   "description": "",
   "files": [
     "dist"
   ],
   "license": "MIT",
   "scripts": {
+    "w": "run-s dev && chokidar 'src/**/*.ts' -c 'run-s dev' -t 1000",
     "dev": "pkgroll --clean-dist --sourcemap=inline && npx pkg-to-dist",
     "build": "pkgroll --clean-dist --minify && npx pkg-to-dist",
     "deploy": "run-s build deploy.only",
