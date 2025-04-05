@@ -1,4 +1,4 @@
-import { type NitroModule } from 'nitropack/core'
+import type { NitroModule } from 'nitropack'
 import { arrayToNestedObject } from './utils/arrayToNestedObject';
 import defu from 'defu'
 import * as fs from 'fs';
