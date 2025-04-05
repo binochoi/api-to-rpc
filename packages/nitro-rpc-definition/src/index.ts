@@ -14,7 +14,7 @@ export default () => ({
                     name: 'defineHandlerSchema'
                 }]
             });
-            nitro.scannedHandlers
+            [...nitro.scannedHandlers, ...nitro.options.handlers]
             .filter((handler): handler is typeof handler & { route: string } => !!handler.route)
             .map(({ route, method, handler }) => {
                 const [_, ...resources] = route.split('/');
