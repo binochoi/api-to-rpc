@@ -8,10 +8,8 @@ const { api } = rpc<API>({
 
 onMounted(async () => {
   const formData = new FormData();
-  formData.set('sival', '잘 갔냐?')
   formData.append('file', new File([''], 'test.txt', { type: 'text/plain' }));
   const get = await api.$post({ body: formData, query: { sival: 'true' } });
-  // const { data, error } = await useAsyncData(async () => await api.$post({ body: { sival: true} }))
   console.log(get)
 })
 </script>

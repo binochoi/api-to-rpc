@@ -101,9 +101,24 @@ importers:
 
   packages/playground/nitro:
     devDependencies:
+      nitro-layer-helloworld:
+        specifier: workspace:*
+        version: link:../nitro-layer-helloworld
       nitro-rpc-definition:
         specifier: ../../nitro-rpc-definition/dist
         version: link:../../nitro-rpc-definition/dist
+      nitropack:
+        specifier: latest
+        version: 2.11.8
+
+  packages/playground/nitro-layer-helloworld:
+    dependencies:
+      h3:
+        specifier: latest
+        version: 1.15.1
+      nitro-extends-routing:
+        specifier: ^0.0.2
+        version: 0.0.2
       nitropack:
         specifier: latest
         version: 2.11.8
@@ -3044,6 +3059,9 @@ packages:
 
   nice-try@1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
+
+  nitro-extends-routing@0.0.2:
+    resolution: {integrity: sha512-7MLbjp9pMpBdRE57/KHGyLJTIDyVwVGEuj+djU7EJQPOz2OH9nyPApcxax/hHo6YUnGiBN+HuXbNcLZEVY5xeA==}
 
   nitropack@2.11.7:
     resolution: {integrity: sha512-ghqLa3Q4X9qaQiUyspWxxoU1fY2nwfSJqhOH+COqyCp7Vgj4oM1EM1L0YNSQUF16T2tAoOWg8woXGq0EH5Y6wQ==}
@@ -7616,6 +7634,8 @@ snapshots:
 
   nice-try@1.0.5: {}
 
+  nitro-extends-routing@0.0.2: {}
+
   nitropack@2.11.7(typescript@5.7.3):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
@@ -7910,7 +7930,7 @@ snapshots:
       magic-string: 0.30.17
       mlly: 1.7.4
       nanotar: 0.2.0
-      nitropack: 2.11.7(typescript@5.7.3)
+      nitropack: 2.11.8
       nypm: 0.6.0
       ofetch: 1.4.1
       ohash: 2.0.11

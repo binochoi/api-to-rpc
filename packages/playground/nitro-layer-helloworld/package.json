@@ -1,0 +1,15 @@
+{
+	"name": "nitro-layer-helloworld",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"main": "./nitro.config.ts",
+	"scripts": {
+		"build": "nitro build"
+	},
+	"peerDependencies": {
+		"nitro-extends-routing": "^0.0.2",
+		"nitropack": "latest",
+		"h3": "latest"
+	}
+}

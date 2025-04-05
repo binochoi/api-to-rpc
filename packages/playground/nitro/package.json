@@ -7,6 +7,7 @@
     "preview": "node .output/server/index.mjs"
   },
   "devDependencies": {
+    "nitro-layer-helloworld": "workspace:*",
     "nitropack": "latest",
     "nitro-rpc-definition": "../../nitro-rpc-definition/dist"
   }
