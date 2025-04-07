@@ -36,5 +36,7 @@ rpc({
 })
 ```
 # TODO
-- [] file
+- [x] file
 - [] SSE
+- [] infer type
+- query, body 등에서 props가 전부 optional일 경우 body: {} 를 하지 않아도 문제 없도록
