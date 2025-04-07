@@ -41,3 +41,4 @@ rpc({
 - [] infer type
 - query, body 등에서 props가 전부 optional일 경우 body: {} 를 하지 않아도 문제 없도록
 - then 할 경우 promise가 두 개라 promise가 가져와짐.
+- beforeRequest, beforeResponse
