@@ -22,7 +22,7 @@ export default () => ({
                     arrayToNestedObject(resources),
                     {
                         [`$${method || 'get'}`]: `~~` + 
-                            `{ response: ReturnType<(typeof import('${handler}'))['default']> }` +
+                            `{ response: Awaited<ReturnType<(typeof import('${handler}'))['default']>> }` +
                             `& AssertSchema<(typeof import('${handler}'))>` +
                             `~~`
                     }
