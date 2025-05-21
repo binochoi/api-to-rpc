@@ -1,5 +1,9 @@
 {
 	"scripts": {
+		"postinstall": "run-p prepare",
+		"prepare": "run-p prepare.*",
+		"prepare.api-to-rpc": "cd packages/api-to-rpc && pnpm build",
+		"prepare.nitro-rpc-definition": "cd packages/nitro-rpc-definition && pnpm build",
 		"dev": "npm-run-all --parallel dev:*",
 		"dev:api-to-rpc": "cd packages/api-to-rpc && pnpm w",
 		"dev:nitro-rpc-definition": "cd packages/nitro-rpc-definition && pnpm w",
