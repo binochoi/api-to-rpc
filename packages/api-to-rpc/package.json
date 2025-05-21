@@ -7,6 +7,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "postinstall": "pnpm build",
     "to-dist": "npx pkg-to-dist",
     "w": "run-s dev && chokidar 'src/**/*.ts' -c 'run-s dev' -t 1000",
     "dev": "run-s dev.build to-dist",

@@ -7,6 +7,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "postinstall": "pnpm build",
     "w": "run-s dev && chokidar 'src/**/*.ts' -c 'run-s dev' -t 1000",
     "dev": "pkgroll --clean-dist --sourcemap=inline && npx pkg-to-dist",
     "build": "pkgroll --clean-dist --minify && npx pkg-to-dist",
