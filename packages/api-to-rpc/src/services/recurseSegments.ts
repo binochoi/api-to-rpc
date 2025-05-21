@@ -1,5 +1,6 @@
-import { Action, Method, Payload, RPCContextOutput } from "src/types";
-import { createFetcher, fetchRequest } from "./fetchRequest";
+import { Action, Method, RPCContextOutput } from "src/types";
+import { createFetcher } from "./fetchRequest";
+import { RPCObjectRecurse } from "src/types/utils/MakeFetchThroughRequest";
 
 type Options = {
     startPath: string,
@@ -13,10 +14,11 @@ const get = (options: Options, context: RPCContextOutput) => (_: any, prop: stri
     if(isAction) {
         const action = prop.slice(1) as Action;
         if(methods.has(action)) {
-            return (payload: Partial<Record<Payload, any>> = {}) => interceptor({
+            return (payload: RPCObjectRecurse<any> = {}) => interceptor({
                 payload,
                 method: action,
                 url: restPath,
+                fetchOptions: payload.fetchOptions,
             }, createFetcher)
         }
     }

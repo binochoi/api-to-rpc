@@ -1,3 +1,4 @@
+import type { FetchOptions } from "ofetch";
 import { ActionParams, Payload } from "..";
 
 /**
@@ -13,7 +14,9 @@ export type MakeFetchThroughRequest<Tapi extends { [K: string]: any }, K extends
  * ```
  * 들어온 object에서 Payload인 property만 남기고 제외
  */
-export type FetchRequestParam<T> = RemoveNeverProps<RPCObjectRecurse<T>>;
+export type FetchRequestParam<T> = RemoveNeverProps<RPCObjectRecurse<T>> & {
+  fetchOptions?: FetchOptions<any>
+};
 
 type IsAllPropertiesOptional<T> = {
   [K in keyof T]-?: undefined extends T[K] ? true : false
