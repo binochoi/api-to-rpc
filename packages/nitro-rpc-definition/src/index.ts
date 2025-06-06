@@ -8,17 +8,13 @@ export default () => ({
     name: "nitro-rpc-definition",
     async setup(nitro) {
         const makeRpcDefinition = () => {
+            if (nitro.options.imports) {
+                nitro.options.imports.presets.push({
+                    from: fileURLToPath(new URL('imports', import.meta.url)),
+                    imports: ['defineHandlerSchema']
+                })
+            }
             let apiRoutes = {};
-            nitro.options.imports = defu(nitro.options.imports, {
-                imports: [{
-                    from: 'nitro-rpc-definition/imports',
-                    name: 'defineHandlerSchema'
-                }]
-            });
-            nitro.options.imports.presets.push({
-                from: fileURLToPath(new URL('utils/defineHandlerSchema', import.meta.url)),
-                imports: ['defineHandlerSchema']
-            });
             [...nitro.scannedHandlers, ...nitro.options.handlers]
             .filter((handler): handler is typeof handler & { route: string } => !!handler.route)
             .map(({ route, method, handler }) => {
