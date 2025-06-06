@@ -1,4 +1,4 @@
-
+import { defineHandlerSchema } from 'nitro-rpc-definition/imports';
 defineHandlerSchema({
   query: {
     query_visible: 'True'

@@ -14,8 +14,8 @@ const get = (options: Options, context: RPCContextOutput) => (_: any, prop: stri
     if(isAction) {
         const action = prop.slice(1) as Action;
         if(methods.has(action)) {
-            return (payload: RPCObjectRecurse<any> = {}) => onResponse(
-                onRequest({
+            return async (payload: RPCObjectRecurse<any> = {}) => onResponse(
+                await onRequest({
                     payload,
                     method: action,
                     url: restPath,

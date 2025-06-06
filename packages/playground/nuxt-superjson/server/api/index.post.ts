@@ -9,4 +9,5 @@ export const schema = defineHandlerSchema({
 export default defineEventHandler(async (e) => {
     const rawBody = await readRawBody(e);
     const body = superjson.parse(rawBody || '{}');
+    return superjson.serialize(body);
 })
