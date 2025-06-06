@@ -7,19 +7,23 @@ type Options = {
 };
 const methods = new Set<Method>(['get', 'post', 'put', 'delete', 'patch']);
 const get = (options: Options, context: RPCContextOutput) => (_: any, prop: string) => {
-    const { interceptor } = context;
+    const { onRequest, onResponse } = context;
     const { startPath: path } = options;
     const isAction = prop.startsWith('$');
     const restPath = isAction ? path : (path ? `${path}/${prop}` : `/${prop}`);
     if(isAction) {
         const action = prop.slice(1) as Action;
         if(methods.has(action)) {
-            return (payload: RPCObjectRecurse<any> = {}) => interceptor({
-                payload,
-                method: action,
-                url: restPath,
-                fetchOptions: payload.fetchOptions,
-            }, createFetcher)
+            return (payload: RPCObjectRecurse<any> = {}) => onResponse(
+                onRequest({
+                    payload,
+                    method: action,
+                    url: restPath,
+                    fetchOptions: payload.fetchOptions,
+                },
+                createFetcher
+            ),
+        );
         }
     }
     return recurseSegments({ startPath: restPath, context });

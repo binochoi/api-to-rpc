@@ -1,0 +1,20 @@
+{
+  "name": "nuxt-playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "api-to-rpc": "../../api-to-rpc/dist",
+    "nitro-rpc-definition": "../../nitro-rpc-definition/dist",
+    "nuxt": "^3.16.0",
+    "valibot": "^1.0.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "superjson": "latest"
+  }
+}

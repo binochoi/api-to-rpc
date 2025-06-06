@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "nitro-layer-helloworld": "workspace:*",
-    "nitropack": "latest",
+    "nitropack": "npm:nitropack-nightly@latest",
     "nitro-rpc-definition": "../../nitro-rpc-definition/dist"
   }
 }
