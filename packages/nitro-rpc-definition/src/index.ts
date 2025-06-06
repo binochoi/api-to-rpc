@@ -3,6 +3,7 @@ import { arrayToNestedObject } from './utils/arrayToNestedObject';
 import defu from 'defu'
 import * as fs from 'fs';
 import { injectValueToDeepProperties } from './utils/injectValueToDeepProperties';
+import { fileURLToPath } from 'url';
 export default () => ({
     name: "nitro-rpc-definition",
     async setup(nitro) {
@@ -13,6 +14,10 @@ export default () => ({
                     from: 'nitro-rpc-definition/imports',
                     name: 'defineHandlerSchema'
                 }]
+            });
+            nitro.options.imports.presets.push({
+                from: fileURLToPath(new URL('utils/defineHandlerSchema', import.meta.url)),
+                imports: ['defineHandlerSchema']
             });
             [...nitro.scannedHandlers, ...nitro.options.handlers]
             .filter((handler): handler is typeof handler & { route: string } => !!handler.route)
