@@ -31,7 +31,7 @@
   },
   "keywords": [],
   "peerDependencies": {
-    "api-to-rpc": "../api-to-rpc/dist"
+    "api-to-rpc": "workspace:*"
   },
   "dependencies": {
     "pkgroll": "^2.4.2",

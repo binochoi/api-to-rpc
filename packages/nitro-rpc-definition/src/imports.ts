@@ -1,2 +1,2 @@
 /** auto imports */
-export { defineHandlerSchema } from './utils/defineHandlerSchema';
+export { defineHandlerSchema, defineValibotSchema } from './utils/defineHandlerSchema';
