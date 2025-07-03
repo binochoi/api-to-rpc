@@ -9,7 +9,7 @@
 	},
 	"peerDependencies": {
 		"nitro-extends-routing": "^0.0.2",
-		"nitropack": "latest",
-		"h3": "latest"
+		"nitropack": "^2.0.0",
+		"h3": "^1.0.0"
 	}
 }
