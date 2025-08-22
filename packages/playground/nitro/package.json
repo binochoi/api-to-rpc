@@ -2,6 +2,7 @@
   "name": "nitro-playground",
   "private": true,
   "scripts": {
+    "prepare": "nitro prepare",
     "build": "nitro build",
     "dev": "nitro dev",
     "preview": "node .output/server/index.mjs"
