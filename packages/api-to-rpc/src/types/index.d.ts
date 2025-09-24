@@ -1,6 +1,7 @@
 import { createFetcher, fetchRequest } from "src/services/fetchRequest";
 import { MakeFetchThroughRequest } from "./utils/MakeFetchThroughRequest";
 import { RPCPayloadMatcher } from "./utils/RPCPayloadMatcher";
+import { type FetchOptions } from "ofetch";
 
 /** @todo head, options 추가해야 하는지 */
 export type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
@@ -17,6 +18,8 @@ export type RPCContext = {
     baseURL: string;
     onRequest?: (params: Parameters<typeof createFetcher>[0], next: typeof createFetcher) => any;
     onResponse?: (data: any) => any;
+    onRequestError?: FetchOptions['onRequestError'];
+    onResponseError?: FetchOptions['onResponseError'];
 }
 export type RPCContextOutput = Required<RPCContext>;
 export type Context = RPCContext;
