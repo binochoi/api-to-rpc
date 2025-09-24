@@ -21,7 +21,8 @@ const get = (options: Options, context: RPCContextOutput) => (_: any, prop: stri
                     url: restPath,
                     fetchOptions: payload.fetchOptions,
                 },
-                createFetcher
+                createFetcher,
+                context,
             ),
         );
         }
