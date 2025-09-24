@@ -8,10 +8,11 @@ export const createFetcher = ({
     method,
     payload: { body, query, params },
     fetchOptions,
-}: HttpRequestParameters, {
-    onRequestError,
-    onResponseError,
-}: Context) => {
+}: HttpRequestParameters, context?: Context) => {
+    const {
+        onRequestError,
+        onResponseError,
+    } = context || {};
     const url = convertUrlParams(_url, params || {});
     return $fetch(url, {
         ...fetchOptions,
