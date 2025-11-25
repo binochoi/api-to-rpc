@@ -12,9 +12,10 @@ export const createFetcher = ({
     const {
         onRequestError,
         onResponseError,
+        options
     } = context || {};
     const url = convertUrlParams(_url, params || {});
-    return $fetch(url, {
+    return (options?.ofetch ?? $fetch)(url, {
         ...fetchOptions,
         body, query, method,
         onRequestError,

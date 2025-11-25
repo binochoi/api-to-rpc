@@ -1,7 +1,7 @@
 import { createFetcher, fetchRequest } from "src/services/fetchRequest";
 import { MakeFetchThroughRequest } from "./utils/MakeFetchThroughRequest";
 import { RPCPayloadMatcher } from "./utils/RPCPayloadMatcher";
-import { type FetchOptions } from "ofetch";
+import type { FetchOptions, $Fetch } from "ofetch";
 
 /** @todo head, options 추가해야 하는지 */
 export type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
@@ -20,6 +20,13 @@ export type RPCContext = {
     onResponse?: (data: any) => any;
     onRequestError?: FetchOptions['onRequestError'];
     onResponseError?: FetchOptions['onResponseError'];
+    options?: {
+        /**
+         * api-to-rpc uses ofetch only.
+         * You can pass a custom ofetch instance here if needed (e.g., for Nuxt).
+         */
+        ofetch?: $Fetch,
+    }
 }
 export type RPCContextOutput = Required<RPCContext>;
 export type Context = RPCContext;
