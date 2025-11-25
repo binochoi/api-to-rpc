@@ -6,7 +6,7 @@ const rpc = <Tapi extends object>(context: RPCContext): RecurseApiDeep<Tapi> => 
     context.onRequest ||= (params, fetcher, context) => fetcher(params, context);
     context.onResponse ||= (data) => data;
     return recurseSegments({
-        startPath: context.baseURL,
+        startPath: context.baseURL || '',
         context: context as RPCContextOutput,
     });
 }

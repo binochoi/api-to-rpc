@@ -15,7 +15,7 @@ export type ActionParams = Payload | 'response';
 export type Action = Method;
 
 export type RPCContext = {
-    baseURL: string;
+    baseURL?: string;
     onRequest?: (params: Parameters<typeof createFetcher>[0], next: typeof createFetcher, context: RPCContext) => any;
     onResponse?: (data: any) => any;
     onRequestError?: FetchOptions['onRequestError'];

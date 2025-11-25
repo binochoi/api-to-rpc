@@ -2,9 +2,7 @@
 import rpc from 'api-to-rpc'
 // import type { API } from './.nuxt/.rpc-definition'
 import type { API } from './.nuxt/.rpc-definition'
-const { api } = rpc<API>({
-  baseURL: 'http://localhost:3001',
-})
+const { api } = rpc<API>()
 
 onMounted(async () => {
   const formData = new FormData();
